@@ -1,0 +1,33 @@
+# Airflow
+airflow.cfg
+airflow.db
+airflow-webserver.pid
+logs/
+*.log
+airflow/logs/
+airflow/webserver_config.py
+plugins/
+unittests.cfg
+.pytest_cache/
+airflow.db-journal
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.env
+.env.local
+
+# Virtual Environment
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+logs/

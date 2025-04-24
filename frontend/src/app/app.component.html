@@ -1,0 +1,45 @@
+<div style="margin: 2em;">
+  <!-- Authentication -->
+  <ng-container *ngIf="!token">
+    <h2 *ngIf="isRegisterMode">Register</h2>
+    <h2 *ngIf="!isRegisterMode">Login</h2>
+    <div>
+      <input [(ngModel)]="username" placeholder="Username" />
+    </div>
+    <div>
+      <input type="password" [(ngModel)]="password" placeholder="Password" />
+    </div>
+    <div *ngIf="isRegisterMode">
+      <input type="email" [(ngModel)]="email" placeholder="Email (optional)" />
+    </div>
+    <div style="margin-top: 0.5em;">
+      <button (click)="isRegisterMode ? register() : login()">
+        {{ isRegisterMode ? 'Register' : 'Login' }}
+      </button>
+      <button (click)="toggleMode()">
+        {{ isRegisterMode ? 'Switch to Login' : 'Switch to Register' }}
+      </button>
+    </div>
+  </ng-container>
+
+  <!-- Main App -->
+  <ng-container *ngIf="token">
+    <div style="margin-bottom: 1em;">
+      <button (click)="logout()">Logout</button>
+    </div>
+    <h1>CV Processing</h1>
+    <input type="file" (change)="onFileSelected($event)" />
+    <button (click)="upload()" [disabled]="!selectedFile">Upload</button>
+    <h2>Jobs</h2>
+    <table cellpadding="5">
+      <tr>
+      <th>ID</th><th>Status</th><th>Created</th>
+      </tr>
+      <tr *ngFor="let job of jobs">
+      <td>{{job.id}}</td>
+      <td>{{job.status}}</td>
+      <td>{{job.created_at | date:'short'}}</td>
+      </tr>
+    </table>
+  </ng-container>
+</div>
